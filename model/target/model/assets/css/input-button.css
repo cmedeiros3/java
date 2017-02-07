@@ -1,0 +1,58 @@
+/* input & button */
+
+/* .ui-inputfield  .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover,
+	.ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
+	background:none;
+} */
+
+
+/* .ui-button .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover,
+	.ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
+	background:#63B8FF;
+}
+ */
+.btn-info {
+	margin-top:5px;
+	 
+}
+
+}
+
+.form-control{
+	margin-bottom:10px;
+}
+
+
+
+label {
+	font-size: 12px !important;
+}
+
+.formularioCorpo {
+
+	width: 66%;
+	height: 66%;
+	margin-bottom:5%;
+	padding-top:5%;
+	padding-left:2%;
+	padding-bottom:1%;
+	
+}
+
+.nameCadastro {
+	margin-bottom: 5%;
+	font-family: verdana;
+	font-size: 156%;
+	padding-left:2%;
+}
+
+.bemVindo {
+	margin-bottom: 5%;
+	font-family: verdana;
+	padding-left:2%;
+}
+
+.find-action {
+    background-image: url(../img/view.png); /* 16px x 16px */
+   
+}

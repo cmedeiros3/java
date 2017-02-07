@@ -1,0 +1,87 @@
+.filterable {
+    margin-top: 15px;
+}
+.filterable .panel-heading .pull-right {
+    margin-top: -20px;
+}
+.filterable .filters input[disabled] {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+    color: #333;
+}
+
+.panel-heading{
+  padding:1px 1px;	
+  background-color:rgba(106, 166, 218, 1);
+}
+
+.ui-datatable-header{
+ background: rgba(218, 234, 255, 1);
+ 
+}
+
+.ui-paginator-top{
+	background:rgba(218, 234, 255, 1) !important;
+	
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	
+	background:rgba(218, 234, 255, 1) ;
+	
+}
+
+.ui-selectcheckboxmenu .ui-widget .ui-state-default .ui-corner-all{
+	 background:#fff !important;
+}
+
+.ui-chkbox-icon .ui-icon .ui-icon-blank{
+	background:#fff !important;
+	overflow:hidden;
+	
+}
+
+.filterHead{
+ background:#fff !important;
+ }
+
+.ui-paginator-bottom{
+ background:rgba(218, 234, 255, 1) !important;
+ }
+ 
+ .ui-widget-header {
+  background:rgba(218, 234, 255, 1) !important;
+ }
+
+
+
+.filterable {
+   
+    float: left;
+    left: 2px;
+   top: -10px;
+    margin-top: 15px;
+    position: absolute;
+    right: 10px;
+     
+}
+
+.panel-title{
+   text-align: center;
+} 
+
+.ui-outputpanel{
+	 text-align: right;
+}  

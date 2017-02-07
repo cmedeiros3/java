@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+ <f:metadata>
+        <f:viewParam name="id" value="#{userBean.entity.id}" />
+       <f:event listener="#{userBean.findById}" type="preRenderView" /> 
+       
+    </f:metadata>
+    
+<ui:composition template="main.xhtml">
+	<ui:define name="corpo">
+		<div class="formularioCorpo">
+				<h:form id="update">
+				<h3 style="margin-top:0">Alterar Usuário</h3>
+				<p:separator styleClass="separatorTitle" />>
+
+				<p:panelGrid columns="2" columnClasses="col-lg-5"
+					styleClass="companyHeaderGrid" id="panel">
+					<p:outputLabel value="Id:" />
+					<p:inputText styleClass="form-control filterHead" id="id"
+						value="#{userBean.entity.id}" />
+					
+					<p:outputLabel value="Username:" />
+					<p:inputText styleClass="form-control filterHead" id="username"
+						value="#{userBean.entity.username}" label="username"
+						required="true" />
+
+					<p:outputLabel value="Email:" />
+					<p:inputText styleClass="form-control filterHead"  id="email"
+						value="#{userBean.entity.email}" label="email" required="true" />
+				
+					
+
+					<p:commandButton styleClass="btn btn-info btn-sm" value="Salvar"
+						action="#{userBean.update}" style="color: #4f4f4f !important;" icon="ui-icon-disk" />
+						
+						<p:commandButton value="Apagar" update="panel" process="@this" icon="ui-icon-trash"
+					styleClass="btn btn-info btn-sm" style="color: #4f4f4f !important;">
+					<p:resetInput target="@form" />
+				</p:commandButton>	
+				</p:panelGrid>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

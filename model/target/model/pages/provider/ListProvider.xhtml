@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="main.xhtml">
+	<ui:define name="corpo">
+<div class="formularioCorpo">
+
+		<p:dataTable var="list" value="#{clientBean.list}" border="1"
+			cellspacing="0" cellpadding="2" paginator="true" rows="5"
+			paginatorPosition="bottom">
+			<p:column headerText="Nome" sortBy="#{list.nome}" >
+				<h:outputText value="#{list.nome}" />
+			</p:column>
+			
+		</p:dataTable>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

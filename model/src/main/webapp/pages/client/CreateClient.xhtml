@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="main.xhtml">
+	<ui:define name="corpo">
+		<div class="formularioCorpo">
+			<p:messages autoUpdate="true" showDetail="false" showSummary="true"
+				closable="true" showIcon="false" styleClass="messagesregister" />
+			<h3 style="margin-top: 0">Incluir Cliente</h3>
+			<p:separator styleClass="separatorTitle" />
+			<h:form id="form">
+
+				<p:panelGrid columns="2" styleClass="companyHeaderGrid"
+					id="panelpessoa">
+					<p:selectOneRadio id="pessoa" value="#{pessoaBean.pessoa}">
+						<f:selectItem itemLabel="Pessoa Física" itemValue="F" />
+						<f:selectItem itemLabel="Pessoa Jurídica" itemValue="J" />
+						<p:ajax update="@form" event="change" oncomplete="pessoa()" />
+					</p:selectOneRadio>
+				</p:panelGrid>
+			</h:form>
+			<h:form id="formf">
+				<p:panelGrid columns="4" styleClass="companyHeaderGrid" id="panel">
+					<p:outputLabel value="Nome:" />
+					<p:inputText styleClass="form-control filterHead" id="nome"
+						value="#{clientBean.newEntity.nome}" required="true" label="nome" />
+					<p:outputLabel value="CPF:" />
+					<p:inputMask mask="999.999.999-99"
+						styleClass="form-control filterHead" id="cpf"
+						value="#{clientBean.newEntity.cpf}" required="true" label="cpf"
+						validatorMessage="CPF inválido." converter="CPFConverter">
+						<f:validator validatorId="CPFValidator" />
+					</p:inputMask>
+					<p:outputLabel value="RG:" />
+					<p:inputText styleClass="form-control filterHead" id="rg"
+						value="#{clientBean.newEntity.rg}" required="true" label="rg"
+						validatorMessage="RG inválido.">
+					</p:inputText>
+					<p:outputLabel value="Email:" />
+					<p:inputText styleClass="form-control filterHead" id="email"
+						value="#{clientBean.newEntity.email}" required="true"
+						label="email" validatorMessage="Email inválido.">
+						<f:validateRegex
+							pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					</p:inputText>
+
+					<p:outputLabel value="Telefone:" />
+					<p:inputMask mask="(99) 9999-99-99"
+						styleClass="form-control filterHead" id="telefone"
+						value="#{clientBean.newEntity.telefone}" required="true"
+						label="telefone" validatorMessage="Telefone inválido."></p:inputMask>
+
+					<p:outputLabel value="Celular:" />
+					<p:inputMask mask="(99) 99999-99-99"
+						styleClass="form-control filterHead" id="celular"
+						value="#{clientBean.newEntity.celular}" required="true"
+						label="celular" validatorMessage="Celular inválido."></p:inputMask>
+
+					<p:outputLabel value="CEP:" />
+					<p:inputMask mask="99999-999" id="cep"
+						styleClass="form-control filterHead" required="true"
+						value="#{clientBean.newEntity.endereco.cep}" label="cep"
+						validatorMessage="Cep inválido.">
+						<p:ajax event="blur" update="estado cidade rua bairro"
+							process="cep" listener="#{clientBean.completeEndereco}"></p:ajax>
+					</p:inputMask>
+
+					<p:outputLabel value="Estado:" />
+					<p:inputText styleClass="form-control filterHead" id="estado"
+						value="#{clientBean.newEntity.endereco.estado}" required="true"
+						label="estado" validatorMessage="Estado inválido.">
+					</p:inputText>
+
+					<p:outputLabel value="Cidade:" />
+					<p:inputText styleClass="form-control filterHead" id="cidade"
+						value="#{clientBean.newEntity.endereco.cidade}" required="true"
+						label="cidade" validatorMessage="Cidade inválido.">
+					</p:inputText>
+
+					<p:outputLabel value="Rua:" />
+					<p:inputText styleClass="form-control filterHead" id="rua"
+						value="#{clientBean.newEntity.endereco.rua}" required="true"
+						label="rua" validatorMessage="Rua inválida.">
+					</p:inputText>
+
+					<p:outputLabel value="Número:" />
+					<p:inputText styleClass="form-control filterHead" id="numero"
+						value="#{clientBean.newEntity.endereco.numero}" required="true"
+						label="numero" validatorMessage="Número inválida.">
+					</p:inputText>
+
+					<p:outputLabel value="Complemento:" />
+					<p:inputText styleClass="form-control filterHead" id="complemento"
+						value="#{clientBean.newEntity.endereco.complemento}"
+						label="complemento" validatorMessage="Complemento inválido.">
+					</p:inputText>
+					<p:outputLabel value="Bairro:" />
+					<p:inputText styleClass="form-control filterHead" id="bairro"
+						value="#{clientBean.newEntity.endereco.bairro}" required="true"
+						label="bairro" validatorMessage="Bairro inválido.">
+					</p:inputText>
+
+					<h:inputHidden id="idendereco"
+						value="#{clientBean.newEntity.endereco.id}" />
+				</p:panelGrid>
+
+				<p:commandButton styleClass="btn btn-info btn-sm" value="Salvar"
+					action="#{clientBean.save}" icon="ui-icon-disk"
+					style="color: #4f4f4f !important;" update="formf formj">
+					<f:ajax execute="@form" render="@form" />
+				</p:commandButton>
+
+				<p:commandButton value="Apagar" update="panel" process="@this"
+					icon="ui-icon-trash" style="color: #4f4f4f !important;"
+					styleClass="btn btn-info btn-sm">
+					<p:resetInput target="@form" />
+				</p:commandButton>
+
+
+			</h:form>
+
+			<h:form id="formj">
+				<p:panelGrid columns="4" styleClass="companyHeaderGrid" id="panel">
+					<p:outputLabel value="Nome:" />
+					<p:inputText styleClass="form-control filterHead" id="nome"
+						value="#{clientBean.newEntity.nome}" required="true" label="nome" />
+
+					<p:outputLabel value="CNPJ:" id="outcnpj" />
+					<p:inputMask mask="99.999.999/9999-99"
+						styleClass="form-control filterHead" id="cnpj"
+						value="#{clientBean.newEntity.cnpj}" required="true" label="cnpj"
+						validatorMessage="Cnpj inválido." converter="CNPJConverter">
+						<f:validator validatorId="CNPJValidator" />
+					</p:inputMask>
+
+					<p:outputLabel value="Email:" />
+					<p:inputText styleClass="form-control filterHead" id="email"
+						value="#{clientBean.newEntity.email}" required="true"
+						label="email" validatorMessage="Email inválido.">
+						<f:validateRegex
+							pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					</p:inputText>
+				<p:outputLabel value="Telefone:" />
+					<p:inputMask mask="(99) 9999-99-99"
+						styleClass="form-control filterHead" id="telefone"
+						value="#{clientBean.newEntity.telefone}" required="true"
+						label="telefone" validatorMessage="Telefone inválido."></p:inputMask>
+
+					<p:outputLabel value="Celular:" />
+					<p:inputMask mask="(99) 99999-99-99"
+						styleClass="form-control filterHead" id="celular"
+						value="#{clientBean.newEntity.celular}" required="true"
+						label="celular" validatorMessage="Celular inválido."></p:inputMask>
+
+					<p:outputLabel value="CEP:" />
+					<p:inputMask mask="99999-999" id="cep"
+						styleClass="form-control filterHead" required="true"
+						value="#{clientBean.newEntity.endereco.cep}" label="cep"
+						validatorMessage="Cep inválido.">
+						<p:ajax event="blur" update="estado cidade rua bairro"
+							process="cep" listener="#{clientBean.completeEndereco}"></p:ajax>
+					</p:inputMask>
+
+					<p:outputLabel value="Estado:" />
+					<p:inputText styleClass="form-control filterHead" id="estado"
+						value="#{clientBean.newEntity.endereco.estado}" required="true"
+						label="estado" validatorMessage="Estado inválido.">
+					</p:inputText>
+
+					<p:outputLabel value="Cidade:" />
+					<p:inputText styleClass="form-control filterHead" id="cidade"
+						value="#{clientBean.newEntity.endereco.cidade}" required="true"
+						label="cidade" validatorMessage="Cidade inválido.">
+					</p:inputText>
+
+					<p:outputLabel value="Rua:" />
+					<p:inputText styleClass="form-control filterHead" id="rua"
+						value="#{clientBean.newEntity.endereco.rua}" required="true"
+						label="rua" validatorMessage="Rua inválida.">
+					</p:inputText>
+
+					<p:outputLabel value="Número:" />
+					<p:inputText styleClass="form-control filterHead" id="numero"
+						value="#{clientBean.newEntity.endereco.numero}" required="true"
+						label="numero" validatorMessage="Número inválida.">
+					</p:inputText>
+
+					<p:outputLabel value="Complemento:" />
+					<p:inputText styleClass="form-control filterHead" id="complemento"
+						value="#{clientBean.newEntity.endereco.complemento}"
+						label="complemento" validatorMessage="Complemento inválido.">
+					</p:inputText>
+					<p:outputLabel value="Bairro:" />
+					<p:inputText styleClass="form-control filterHead" id="bairro"
+						value="#{clientBean.newEntity.endereco.bairro}" required="true"
+						label="bairro" validatorMessage="Bairro inválido.">
+					</p:inputText>
+
+					<h:inputHidden id="idendereco"
+						value="#{clientBean.newEntity.endereco.id}" />
+				</p:panelGrid>
+
+				<p:commandButton styleClass="btn btn-info btn-sm" value="Salvar"
+					action="#{clientBean.save}" icon="ui-icon-disk"
+					style="color: #4f4f4f !important;" update="formf formj">
+					<f:ajax execute="@form" render="@form" />
+				</p:commandButton>
+
+				<p:commandButton value="Apagar" update="panel" process="@this"
+					icon="ui-icon-trash" style="color: #4f4f4f !important;"
+					styleClass="btn btn-info btn-sm">
+					<p:resetInput target="@form" />
+				</p:commandButton>
+
+
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

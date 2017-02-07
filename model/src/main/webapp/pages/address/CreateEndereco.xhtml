@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="main.xhtml">
+	<ui:define name="corpo">
+		<div class="formularioCorpo">
+			<h:form>
+				<p:messages autoUpdate="true" showDetail="false" showSummary="true"
+					closable="true" showIcon="false" styleClass="messagesregister" />
+				<h3 style="margin-top: 0">Incluir Endereço</h3>
+				<p:separator styleClass="separatorTitle" />
+				<p:panelGrid columns="4" styleClass="companyHeaderGrid">
+
+				
+					<p:outputLabel value="CEP.:" />
+					<p:inputText styleClass="form-control filterHead" id="cep"
+						value="#{enderecoBean.entity.cep}" required="true"
+						label="cep" validatorMessage="Cep inválido.">
+					</p:inputText>
+
+					<p:outputLabel value="Estado.:" />
+					<p:inputText styleClass="form-control filterHead" id="estado"
+						value="#{enderecoBean.entity.estado}" required="true"
+						label="estado" validatorMessage="Estado inválido.">
+					</p:inputText>
+
+					<p:outputLabel value="Cidade.:" />
+					<p:inputText styleClass="form-control filterHead" id="cidade"
+						value="#{enderecoBean.entity.cidade}" required="true"
+						label="cidade" validatorMessage="Cidade inválido.">
+					</p:inputText>
+
+					<p:outputLabel value="Rua.:" />
+					<p:inputText styleClass="form-control filterHead" id="rua"
+						value="#{enderecoBean.entity.rua}" required="true"
+						label="rua" validatorMessage="Rua inválida.">
+					</p:inputText>
+
+					<p:outputLabel value="Número.:" />
+					<p:inputText styleClass="form-control filterHead" id="numero"
+						value="#{enderecoBean.entity.numero}" required="true"
+						label="numero" validatorMessage="Número inválida.">
+					</p:inputText>
+
+					<p:outputLabel value="Complemento.:" />
+					<p:inputText styleClass="form-control filterHead" id="complemento"
+						value="#{enderecoBean.entity.complemento}" required="true"
+						label="complemento" validatorMessage="Complemento inválido.">
+					</p:inputText>
+					<p:outputLabel value="Bairro.:" />
+					<p:inputText styleClass="form-control filterHead" id="bairro"
+						value="#{enderecoBean.entity.bairro}" required="true"
+						label="bairro" validatorMessage="Bairro inválido.">
+					</p:inputText>
+
+					<p:commandButton styleClass="btn btn-info btn-sm" value="Salvar"
+						action="#{enderecoBean.save}" icon="ui-icon-disk"
+						style="color: #4f4f4f !important;" />
+
+				</p:panelGrid>
+
+
+
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

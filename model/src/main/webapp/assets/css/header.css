@@ -1,0 +1,30 @@
+/* header & title */
+.header {
+	background: #337ab7;
+	height: 100px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.header .title {
+	color: #FFF;
+	padding-top: 10px;
+}
+
+.header .title .sitename a {
+	border-bottom: 1px dashed #657382;
+	color: #FFF;
+	font: normal 3em sans-serif;
+	padding-bottom: 2px;
+	text-decoration: none;
+}
+
+.header .title a:hover {
+	border-color: #F60;
+}
+
+.header .title .slogan {
+	font: normal 1.1em Verdana, sans-serif;
+	padding-top: 6px;
+}
+

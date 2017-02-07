@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:viewParam name="id" value="#{userBean.entity.id}" />
+	<f:event listener="#{userBean.findById}" type="preRenderView" />
+</f:metadata>
+
+<ui:composition template="main.xhtml">
+	<ui:define name="corpo">
+		<div class="formularioCorpo">
+
+			<h:form id="delete">
+				<p:messages id="messages" autoUpdate="true" showDetail="false" />
+				<h3 style="margin-top: 0">Excluir Usuário</h3>
+				<p:separator styleClass="separatorTitle" />
+				<p:panelGrid columns="2" columnClasses="col-lg-5"
+					styleClass="companyHeaderGrid">
+
+					<p:outputLabel value="Id:" />
+					<p:inputText styleClass="form-control filterHead" id="id"
+						value="#{userBean.entity.id}" />
+
+					<p:outputLabel value="Username:" />
+					<p:inputText styleClass="form-control filterHead" id="username"
+						value="#{userBean.entity.username}" label="username"
+						required="true" />
+
+					<p:outputLabel value="Email:" />
+					<p:inputText styleClass="form-control filterHead" id="email"
+						value="#{userBean.entity.email}" label="email" required="true" />
+
+					<p:commandButton styleClass="btn btn-info btn-sm"
+						action="#{userBean.delete}" value="Excluir" icon="ui-icon-trash"
+						style="color: #4f4f4f !important;" />
+				</p:panelGrid>
+			</h:form>
+
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

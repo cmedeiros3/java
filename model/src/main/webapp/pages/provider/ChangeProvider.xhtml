@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+ <f:metadata>
+        <f:viewParam name="id" value="#{clientBean.entity.id}" />
+       <f:event listener="#{clientBean.findById}" type="preRenderView" /> 
+       
+    </f:metadata>
+
+<ui:composition template="main.xhtml">
+	<ui:define name="corpo">
+		<div class="formularioCorpo">
+			<h:form id="update">
+				<p:messages autoUpdate="true" showDetail="false" showSummary="true"
+					closable="true" showIcon="false" styleClass="messagesregister" />
+				<h3 style="margin-top: 0">Alterar Cliente</h3>
+				<p:separator styleClass="separatorTitle" />
+				<p:panelGrid columns="4" styleClass="companyHeaderGrid" id="panel">
+					
+					<p:outputLabel value="Nome:" />
+					<p:inputText styleClass="form-control filterHead" id="nome"
+						value="#{clientBean.entity.nome}" required="true" label="nome" />
+
+					<p:outputLabel value="Email:" />
+					<p:inputText styleClass="form-control filterHead" id="email"
+						value="#{clientBean.entity.email}" required="true" label="email"
+						validatorMessage="Email inválido."></p:inputText>
+
+					<p:outputLabel value="CPF:" />
+					<p:inputText styleClass="form-control filterHead" id="cpf"
+						value="#{clientBean.entity.cpf}" required="true" label="cpf"
+						validatorMessage="CPF inválido."></p:inputText>
+
+					<p:outputLabel value="RG:" />
+					<p:inputText styleClass="form-control filterHead" id="rg"
+						value="#{clientBean.entity.rg}" required="true" label="rg"
+						validatorMessage="RG inválido.">
+					</p:inputText>
+
+					<p:outputLabel value="Telefone:" />
+					<p:inputText styleClass="form-control filterHead" id="telefone"
+						value="#{clientBean.entity.telefone}" required="true"
+						label="telefone" validatorMessage="Telefone inválido."></p:inputText>
+
+					<p:outputLabel value="Celular:" />
+					<p:inputText styleClass="form-control filterHead" id="celular"
+						value="#{clientBean.entity.celular}" required="true"
+						label="celular" validatorMessage="Celular inválido."></p:inputText>
+
+
+					<p:outputLabel value="CEP:" />
+					<p:inputText styleClass="form-control filterHead" id="cep"
+						value="#{clientBean.entity.endereco.cep}" required="true"
+						label="cep" validatorMessage="Cep inválido.">
+					</p:inputText>
+
+					<p:outputLabel value="Estado:" />
+					<p:inputText styleClass="form-control filterHead" id="estado"
+						value="#{clientBean.entity.endereco.estado}" required="true"
+						label="estado" validatorMessage="Estado inválido.">
+					</p:inputText>
+
+					<p:outputLabel value="Cidade:" />
+					<p:inputText styleClass="form-control filterHead" id="cidade"
+						value="#{clientBean.entity.endereco.cidade}" required="true"
+						label="cidade" validatorMessage="Cidade inválido.">
+					</p:inputText>
+
+					<p:outputLabel value="Rua:" />
+					<p:inputText styleClass="form-control filterHead" id="rua"
+						value="#{clientBean.entity.endereco.rua}" required="true"
+						label="rua" validatorMessage="Rua inválida.">
+					</p:inputText>
+
+					<p:outputLabel value="Número:" />
+					<p:inputText styleClass="form-control filterHead" id="numero"
+						value="#{clientBean.entity.endereco.numero}" required="true"
+						label="numero" validatorMessage="Número inválida.">
+					</p:inputText>
+
+					<p:outputLabel value="Complemento:" />
+					<p:inputText styleClass="form-control filterHead" id="complemento"
+						value="#{clientBean.entity.endereco.complemento}" required="true"
+						label="complemento" validatorMessage="Complemento inválido.">
+					</p:inputText>
+					<p:outputLabel value="Bairro:" />
+					<p:inputText styleClass="form-control filterHead" id="bairro"
+						value="#{clientBean.entity.endereco.bairro}" required="true"
+						label="bairro" validatorMessage="Bairro inválido.">
+					</p:inputText>
+
+					<h:inputHidden id="idendereco"
+						value="#{clientBean.entity.endereco.id}" />
+				</p:panelGrid>
+
+				<p:commandButton styleClass="btn btn-info btn-sm" value="Salvar"
+								action="#{clientBean.update}" icon="ui-icon-disk"
+								style="color: #4f4f4f !important;" />
+
+				<p:commandButton value="Apagar" update="panel" process="@this" icon="ui-icon-trash"
+					 style="margin-right:20px;">
+					<p:resetInput target="@form" />
+				</p:commandButton>
+				
+					
+
+
+
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

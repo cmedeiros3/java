@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="main.xhtml">
+	<ui:define name="corpo">
+		<div class="formularioCorpo">
+			<h:form>
+				<div class="panel panel-primary filterable">
+					<div class="panel-heading">
+						<h3 class="panel-title">Usuários</h3>
+						<p:dataTable var="list" value="#{userBean.list}" border="1"
+							cellspacing="0" cellpadding="2" paginator="true" rows="8"
+							paginatorPosition="bottom" widgetVar="user">
+							<f:facet name="header">
+								<p:outputPanel>
+									<h:outputText value="Buscar: " />
+									<p:inputText id="globalFilter" onkeyup="PF('user').filter()"
+										style="width:15%;background:#fff !important;"
+										placeholder="Entre com a busca" />
+								</p:outputPanel>
+							</f:facet>
+
+							<p:column headerText="Ações" style="width:80px;">
+
+
+								<p:link outcome="ViewUser" title="Visualizar">
+									<f:param name="id" value="#{list.id}" />
+									<h:graphicImage value="../../assets/img/view.png"
+										style="width:14px;" />
+								</p:link>
+								<p:spacer width="5" />
+								<p:link outcome="ChangeUser" title="Editar">
+									<f:param name="id" value="#{list.id}" />
+									<h:graphicImage value="../../assets/img/edit.png"
+										style="width:14px;" />
+								</p:link>
+								<p:spacer width="5" />
+								<p:link outcome="DeleteUser" title="Excluir">
+									<f:param name="id" value="#{list.id}" />
+									<h:graphicImage value="../../assets/img/delete.png"
+										style="width:14px;" />
+								</p:link>
+
+							</p:column>
+							<p:column filterBy="#{list.username}" headerText="Usuário"
+								filterMatchMode="in" style="width:200px;">
+								<f:facet name="filter">
+									<p:selectCheckboxMenu onchange="PF('user').filter()"
+										label="Selecione" styleClass="filterHead">
+
+										<f:selectItems value="#{userBean.findField('username')}" />
+									</p:selectCheckboxMenu>
+								</f:facet>
+								<h:outputText value="#{list.username}" />
+							</p:column>
+
+							<p:column filterBy="#{list.email}" headerText="E-mail"
+								filterMatchMode="in" style="width:300px;">
+								<f:facet name="filter">
+									<p:selectCheckboxMenu label="Selecione" styleClass="filterHead"
+										onchange="PF('user').filter()" scrollHeight="150">
+										<f:selectItems value="#{userBean.findField('email')}" />
+									</p:selectCheckboxMenu>
+								</f:facet>
+								<h:outputText value="#{list.email}" />
+							</p:column>
+							<p:column filterBy="#{list.password}" headerText="Senha"
+								filterMatchMode="in">
+								<f:facet name="filter">
+									<p:selectCheckboxMenu label="Selecione" styleClass="filterHead"
+										onchange="PF('user').filter()">
+										<f:selectItems value="#{userBean.findField('password')}" />
+									</p:selectCheckboxMenu>
+								</f:facet>
+								<h:outputText value="#{list.password}" />
+							</p:column>
+
+						</p:dataTable>
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:viewParam name="id" value="#{clientBean.entity.id}" />
+	<f:event listener="#{clientBean.findById}" type="preRenderView" />
+
+</f:metadata>
+
+<ui:composition template="main.xhtml">
+	<ui:define name="corpo">
+		<div class="formularioCorpo">
+			<h:form>
+				<p:messages autoUpdate="true" showDetail="false" showSummary="true"
+					closable="true" showIcon="false" styleClass="messagesregister" />
+				<h3 style="margin-top: 0">Visualizar Cliente</h3>
+				<p:separator styleClass="separatorTitle" />
+				<p:panelGrid columns="2" columnClasses="col-lg-5"
+					styleClass="companyHeaderGrid">
+					<p:outputLabel value="Nome:" />
+					<p:outputLabel styleClass="form-control filterHead" id="nome" style="width:120px;"
+						value="#{clientBean.entity.nome}"/>
+
+					<p:outputLabel value="RG.:" />
+					<p:outputLabel styleClass="form-control filterHead" id="rg"
+						value="#{clientBean.entity.rg}" />
+
+					<p:outputLabel value="CPF:" />
+					<p:outputLabel styleClass="form-control filterHead" id="cpf" />
+
+					<p:outputLabel value="Telefone:" />
+					<p:outputLabel styleClass="form-control filterHead" id="telefone"
+						value="#{clientBean.entity.telefone}" />
+
+					<p:outputLabel value="Celular:" />
+					<p:outputLabel styleClass="form-control filterHead" id="celular"
+						value="#{clientBean.entity.celular}" />
+
+				</p:panelGrid>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

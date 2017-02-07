@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" href="../../assets/css/login.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/bootstrap.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/bootstrap-theme.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/style.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/header.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/menu.css" type="text/css"
+		media="all" />
+	<link rel="stylesheet" href="../../assets/css/footer.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/input-button.css"
+		type="text/css" media="all" />
+
+	<title><ui:insert name="titulo"> Treinamento</ui:insert></title>
+
+</h:head>
+<h:body>
+
+	<p:dialog appendToBody="true" closable="false" draggable="true"
+		footer="teste" header="Web Service CEP" maximizable="true"
+		minimizable="true" position="center" resizable="false"
+		showEffect="slide" visible="true">
+
+		<h:form id="frmBusca">
+			<h:panelGrid id="pnCEP" columns="3">
+				<h:outputText value="CEP: " />
+				<p:inputMask mask="99999-999" value="#{ServiceBean.cep}" />
+
+				<p:commandButton value="Pesquisar" icon="ui-icon-search"
+					action="#{ServiceBean.encontraCEP}" update=":frmResultado" />
+			</h:panelGrid>
+		</h:form>
+		<h:form id="frmResultado">
+			<h:panelGrid id="pnResultado" columns="2">
+				<h:outputLabel value="UF: "
+					style="font-weight:bold; padding-right: 5px; float: right;" />
+				<p:inputText size="5" value="#{ServiceBean.estado}" />
+
+				<h:outputLabel value="Logradouro: "
+					style="font-weight:bold; padding-right: 5px; float: right;" />
+				<p:inputText size="50"
+					value="#{ServiceBean.logradouro}" />
+
+				<h:outputLabel value="Cidade: "
+					style="font-weight:bold; padding-right: 5px; float: right;" />
+				<p:inputText size="50" value="#{ServiceBean.cidade}" />
+
+				<h:outputLabel value="Bairro: "
+					style="font-weight:bold; padding-right: 5px; float: right;" />
+				<p:inputText size="25" value="#{ServiceBean.bairro}" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="main.xhtml">
+	<ui:define name="corpo">
+		<div class="formularioCorpo">
+			<h:form>
+				<p:messages autoUpdate="true" showDetail="false" showSummary="true"
+					closable="true" showIcon="false" styleClass="messagesregister" />
+				<h3 style="margin-top: 0">Incluir Usuário</h3>
+				<p:separator styleClass="separatorTitle" />
+				<p:panelGrid columns="2" columnClasses="col-lg-5"
+					styleClass="companyHeaderGrid" id="panel">
+					<p:outputLabel value="Usuário:" />
+					<p:inputText styleClass="form-control filterHead" id="username"
+						value="#{userBean.newEntity.username}" required="true"
+						label="username" />
+
+					<p:outputLabel value="Email:" />
+					<p:inputText styleClass="form-control filterHead" id="email"
+						value="#{userBean.newEntity.email}" required="true" label="email"
+						validatorMessage="Email inválido.">
+						<f:validateRegex
+							pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					</p:inputText>
+
+					<p:outputLabel value="Senha:" />
+					<p:password styleClass="form-control filterHead" id="password"
+						value="#{userBean.newEntity.password}" required="true"
+						label="senha" match="passwordconfirmation"
+						validatorMessage="A senha deve conter 5-20 dígitos, incluíndo números e letras.">
+						<f:validateRegex pattern="((?=.*\d)(?=.*[a-zA-Z0-9]).{5,20})" />
+						<p:ajax event="blur" listener="#{clientBean.encrypt}"></p:ajax>
+					</p:password>
+
+					<p:outputLabel value="Confirmação da Senha:" />
+					<p:password styleClass="form-control filterHead"
+						id="passwordconfirmation"
+						value="#{userBean.newEntity.passwordConfirmation}" required="true"
+						label="confirmação da senha">
+						<f:validateLength minimum="3" maximum="15" />
+
+					</p:password>
+
+					<p:commandButton styleClass="btn btn-info btn-sm" value="Salvar"
+						action="#{userBean.save}" icon="ui-icon-disk"
+						style="color: #4f4f4f !important;" />
+
+					<p:commandButton value="Apagar" update="panel" process="@this"
+						icon="ui-icon-trash" style="color: #4f4f4f !important;" styleClass="btn btn-info btn-sm" >
+						<p:resetInput target="@form" />
+					</p:commandButton>
+
+				</p:panelGrid>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

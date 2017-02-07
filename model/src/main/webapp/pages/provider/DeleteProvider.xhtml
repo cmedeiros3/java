@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:viewParam name="id" value="#{clientBean.entity.id}" />
+	<f:event listener="#{clientBean.findById}" type="preRenderView" />
+
+</f:metadata>
+
+<ui:composition template="main.xhtml">
+	<ui:define name="corpo">
+		<div class="formularioCorpo">
+
+			<h:form id="delete">
+				<p:messages id="messages" autoUpdate="true" showDetail="false" />
+				<h3 style="margin-top: 0">Excluir Usuário</h3>
+				<p:separator styleClass="separatorTitle" />
+				<p:panelGrid columns="2" columnClasses="col-lg-5"
+					styleClass="companyHeaderGrid">
+
+					<p:outputLabel value="Id:" />
+					<p:inputText styleClass="form-control filterHead" id="id"
+						value="#{clientBean.entity.id}" />
+
+					<p:outputLabel value="Nome:" />
+					<p:inputText styleClass="form-control filterHead" id="nome"
+						value="#{clientBean.entity.nome}" required="true" label="nome" />
+
+					<p:outputLabel value="Email:" />
+					<p:inputText styleClass="form-control filterHead" id="email"
+						value="#{clientBean.entity.email}" required="true" label="email"
+						validatorMessage="Email inválido."></p:inputText>
+
+					<p:outputLabel value="CPF:" />
+					<p:inputText styleClass="form-control filterHead" id="cpf"
+						value="#{clientBean.entity.cpf}" required="true" label="cpf"
+						validatorMessage="CPF inválido."></p:inputText>
+
+					<p:outputLabel value="RG:" />
+					<p:inputText styleClass="form-control filterHead" id="rg"
+						value="#{clientBean.entity.rg}" required="true" label="rg"
+						validatorMessage="RG inválido.">
+					</p:inputText>
+
+
+					<p:commandButton styleClass="btn btn-info btn-sm"
+						action="#{clientBean.delete}" value="Excluir" icon="ui-icon-trash"
+						style="color: #4f4f4f !important;" />
+				</p:panelGrid>
+			</h:form>
+
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

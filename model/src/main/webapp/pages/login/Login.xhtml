@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" href="../../assets/css/login.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/bootstrap.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/bootstrap-theme.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/style.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/header.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/menu.css" type="text/css"
+		media="all" />
+	<link rel="stylesheet" href="../../assets/css/footer.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/input-button.css"
+		type="text/css" media="all" />
+
+	<title><ui:insert name="titulo"> Treinamento</ui:insert></title>
+
+</h:head>
+<h:body style="background-color:rgba(134, 200, 249, 1);">
+
+
+	<div id="login-dialog">
+		<p:messages id="messageslogin" autoUpdate="true" showDetail="false" />
+		<div>
+			<div>
+				<h:graphicImage value="../../assets/img/user.png"
+					style="width:60px; margin-left: 2%; margin-top:2px;" />
+			</div>
+			<div>
+				<h1 style="padding-bottom: 10px;">Login</h1>
+			</div>
+		</div>
+
+
+
+		<h:form id="frm">
+
+			<h:panelGrid columns="2" styleClass="companyHeaderGrid">
+				<p:outputLabel value="Usuário" for="usuario" />
+				<p:inputText id="usuario" size="20" value="#{userBean.username}"
+					styleClass="form-control" label="email" />
+
+				<p:outputLabel value="Senha" for="senha" />
+				<p:password id="senha" size="20" value="#{userBean.password}"
+					styleClass="form-control" label="senha" />
+
+				<p:commandButton styleClass="btn btn-info btn-sm" value="Login"
+					action="#{userBean.login}" />
+
+			</h:panelGrid>
+			<p:commandButton styleClass="btn-link" value="Esqueceu a senha?"
+				action="#{userBean.remember}" />
+			<p:link outcome="CreateUserOuter" value="Cadastrar"
+				styleClass="btn-link" />
+
+		</h:form>
+
+	</div>
+
+
+
+</h:body>
+
+</html>

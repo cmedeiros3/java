@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+	<div id="menu">
+		<p:menubar id="menu" styleClass="menu">
+			<p:submenu label="Usuário" style="height:100%;">
+				<p:menuitem value="Incluir" url="../login/CreateUser.xhtml"></p:menuitem>
+				<p:menuitem value="Consultar" url="../login/FindUser.xhtml"></p:menuitem>
+			</p:submenu>
+			<p:submenu label="Clientes" style="height:100%;">
+				<p:menuitem value="Incluir" url="../client/CreateClient.xhtml"></p:menuitem>
+				<p:menuitem value="Consultar" url="../login/FindClient.xhtml"></p:menuitem>
+			</p:submenu>
+			<p:submenu label="Fornecedores" style="height:100%;">
+				<p:menuitem value="Incluir" url="../login/CreateUser.xhtml"></p:menuitem>
+				<p:menuitem value="Consultar" url="../login/FindUser.xhtml"></p:menuitem>
+			</p:submenu>
+			<p:submenu label="Projetos" style="height:100%;">
+				<p:menuitem value="Incluir" url="../login/CreateUser.xhtml"></p:menuitem>
+				<p:menuitem value="Consultar" url="../login/FindUser.xhtml"></p:menuitem>
+			</p:submenu>
+			<p:submenu label="Atividades" style="height:100%;">
+				<p:menuitem value="Incluir" url="../login/CreateUser.xhtml"></p:menuitem>
+				<p:menuitem value="Consultar" url="../login/FindUser.xhtml"></p:menuitem>
+			</p:submenu>
+			<p:submenu label="Membros" style="height:100%;">
+				<p:menuitem value="Incluir" url="../login/CreateUser.xhtml"></p:menuitem>
+				<p:menuitem value="Consultar" url="../login/FindUser.xhtml"></p:menuitem>
+			</p:submenu>
+			<p:submenu label="Equipes" style="height:100%;">
+				<p:menuitem value="Incluir" url="../login/CreateUser.xhtml"></p:menuitem>
+				<p:menuitem value="Consultar" url="../login/FindUser.xhtml"></p:menuitem>
+			</p:submenu>
+			<p:submenu label="Produtos" style="height:100%;">
+				<p:menuitem value="Incluir" url="../login/CreateUser.xhtml"></p:menuitem>
+				<p:menuitem value="Consultar" url="../login/FindUser.xhtml"></p:menuitem>
+			</p:submenu>
+			<p:submenu label="Sair">
+
+				<p:menuitem value="Logout" action="#{userBean.logout}"></p:menuitem>
+			</p:submenu>
+
+		</p:menubar>
+	</div>
+	<div id="username"
+		style='padding-top: 10px; position: absolute; right: 3%; margin-top: -3%; position: relative; float: right; z-index: 1000;'>
+
+		<p class="bemVindo">Bem-vindo #{userBean.username}!</p>
+
+
+	</div>
+
+
+</ui:composition>
+</html>

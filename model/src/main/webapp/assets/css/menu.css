@@ -1,0 +1,39 @@
+/* menu */
+.ui-menu, .ui-menu .ui-menu-child {
+	background-color:#337ab7;
+	
+	}
+
+
+
+.ui-menuitem-active{
+	background-color:#63B8FF;
+}
+
+
+
+.ui-menubar .ui-menu-child .ui-menuitem-link {
+	width: 100%;
+}
+
+
+.ui-menuitem-link{
+	color:#FFF;
+	
+}
+
+.ui-menuitem-text{
+	font-weight:bold;
+	
+	
+}
+
+
+
+.navigation ul [role="menu"]{
+	overflow:hidden;
+}
+
+.user{
+	float: right; float: right; padding-right: 10px; padding-top: 10px;
+}

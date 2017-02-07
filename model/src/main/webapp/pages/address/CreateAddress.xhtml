@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../templates/main.xhtml">
+	<ui:define name="corpo">
+		<div class="formularioCorpo">
+			<h:form>
+				<p:messages autoUpdate="true" showDetail="false" showSummary="true"
+					closable="true" showIcon="false" styleClass="messagesregister" />
+				<p:outputLabel value="Incluir Endereco" styleClass="nameCadastro" />
+				<p:panelGrid columns="2" columnClasses="col-lg-5"
+					styleClass="companyHeaderGrid">
+					
+					<p:outputLabel value="CEP:" />
+					<p:inputMask mask="99999-999" id="cep"
+						styleClass="form-control filterHead" required="true"
+						value="#{enderecoBean.newEntity.cep}" label="cep"
+						validatorMessage="Cep inválido.">
+						<p:ajax event="blur" update="estado cidade rua bairro" 
+							process="cep" 
+							listener="#{enderecoBean.newEntity.findCep}"></p:ajax>
+					</p:inputMask>
+					
+					<p:outputLabel value="Rua:" />
+					<p:inputText styleClass="form-control" id="nome"
+						value="#{enderecoBean.newEntity.rua}" required="true" label="rua" />
+
+					<p:outputLabel value="Numero.:" />
+					<p:inputText styleClass="form-control" id="rg"
+						value="#{enderecoBean.newEntity.numero}" required="true" label="numero"
+						validatorMessage="Número inválido.">
+					</p:inputText>
+					<p:outputLabel value="Cidade:" />
+					<p:inputText styleClass="form-control" id="cidade"
+						value="#{enderecoBean.newEntity.cidade}" required="true"
+						label="cidade">
+					</p:inputText>
+
+					<p:outputLabel value="Estado:" />
+					<p:inputText styleClass="form-control" id="estado"
+						value="#{enderecoBean.newEntity.estado}" required="true"
+						label="celular" validatorMessage="Estado inválido.">
+
+					</p:inputText>
+				</p:panelGrid>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

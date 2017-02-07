@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" href="../../assets/css/login.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/bootstrap.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/bootstrap-theme.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/style.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/header.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/menu.css" type="text/css"
+		media="all" />
+	<link rel="stylesheet" href="../../assets/css/footer.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/input-button.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../../assets/css/filter.css"
+		type="text/css" media="all" />
+
+	<title><ui:insert name="titulo"> Treinamento</ui:insert></title>
+
+</h:head>
+<h:body>
+	<div class="outer-container">
+		<div class="inner-container">
+			<div class="HeaderArea">
+				<ui:insert name="header">
+					<ui:include src="../templates/header.xhtml" />
+				</ui:insert>
+			</div>
+			<!-- 	<div class="MenuArea">
+					<ui:insert name="menu">
+						<ui:include src="../templates/menu.xhtml" />
+					</ui:insert>
+				</div>
+ 				-->
+			<div class="main">
+				<p:layout
+					style="min-width:400px;min-height:400px;margin-bottom:1%;overflow:hidden;"
+					id="layout">
+					
+					<p:layoutUnit position="west" resizable="true" size="300"
+						minSize="40" maxSize="100">
+						
+						<p:link outcome="CreateClient" title="Incluir">
+							<h:graphicImage value="../../assets/img/addIcon.png"
+								style="width:60px; margin-left: 20%; margin-top:10px;" />
+						</p:link>
+						<p:spacer height="30" />
+						
+						<p:link outcome="FindClient" title="Consultar">
+							<h:graphicImage value="../../assets/img/listIcon.jpg"
+								style="width:60px;margin-left: 20%;" />
+						</p:link>
+						<p:spacer height="30" />
+						
+						<p:link outcome="DeleteClient" title="Gerar Relatórios">
+							<h:graphicImage value="../../assets/img/relatorio.png"
+								style="width:60px;margin-left: 20%;" />
+						</p:link>
+						<p:spacer height="30" />
+						
+						<p:link outcome="DeleteClient" title="Visualizar em SIG">
+							<h:graphicImage value="../../assets/img/gis.gif"
+								style="width:60px;margin-left: 20%;" />
+						</p:link>
+					</p:layoutUnit>
+					
+					<p:layoutUnit position="center" styleClass="layoutUnit"
+						resizable="true" minSize="50" maxSize="200" size="300">
+						
+						
+							<ui:insert name="corpo">
+							</ui:insert>
+					
+						
+						<div class="clearer"></div>
+					</p:layoutUnit>
+
+				</p:layout>
+
+
+			</div>
+			<div class="FooterArea">
+				<ui:insert name="footer">
+					<ui:include src="../templates/footer.xhtml" />
+				</ui:insert>
+			</div>
+
+
+
+		</div>
+	</div>
+</h:body>
+
+</html>
